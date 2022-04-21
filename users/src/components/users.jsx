@@ -6,8 +6,8 @@ class Users extends Component {
   };
   render() {
     return (
-      <>
-        <button type="button" className="btn btn-primary">
+      <div className="border border-light">
+        <button type="button" className="btn btn-success m-5">
           Create
         </button>
         <div className="row">
@@ -23,11 +23,19 @@ class Users extends Component {
                   {user.first_name} {user.last_name}
                 </h4>
                 <h5>{user.email}</h5>
+                <div className="row">
+                    <div className="col-6">
+                        <button type="button" class="btn btn-primary" onClick={this.handleUpdate}>Update</button>
+                    </div>
+                    <div className="col-6">
+                    <button type="button" class="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+                    </div>
+                </div>
               </div>
             );
           })}
         </div>
-      </>
+      </div>
     );
   }
 }
