@@ -1,13 +1,19 @@
+import axios from "axios";
 import React, { Component } from "react";
 
 class Users extends Component {
   state = {
     users: [],
   };
+
+  async componentDidMount(){
+      const response = await axios.get("https://reqres.in/api/users");
+      this.setState({users: response.data.data})
+  }
   render() {
     return (
       <div className="border border-light">
-        <button type="button" className="btn btn-success m-5">
+        <button type="button" className="btn btn-success m-5" onClick={this.handleCreate}>
           Create
         </button>
         <div className="row">
@@ -38,6 +44,13 @@ class Users extends Component {
       </div>
     );
   }
+
+
+  handleCreate = () => {};
+
+  handleUpdate = (user) => {};
+
+  handleDelete = (user) => {};
 }
 
 export default Users;
