@@ -59,21 +59,27 @@ class Users extends Component {
         first_name: 'shaden',
         last_name: 'Ghasri',
         email: 'ghasrishaden@gmail.com',
-        avatar: 'https://images.unsplash.com/photo-1580681477315-f272d1430746?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=412&q=80'
+        avatar: 'https://images.unsplash.com/photo-1517035753523-2077b746904d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80'
       };
       const response = await axios.post("https://reqres.in/api/users", newUser);
       this.setState({users: [...this.state.users, newUser]});
   };
 
-  
-  
+
+  handleUpdate = async (user) => {
+    user.first_name = "shaden";
+    const response = await axios.put(`https://reqres.in/api/users/${user.id}`,user);
+    const updatedUsers = [...this.state.users];
+    const userIndex = updatedUsers.indexOf(user);
+    updatedUsers[userIndex] = {...user};
+    this.setState({users: updatedUsers});
 
 
+  };
 
+  handleDelete = async (user) => {
 
-  handleUpdate = (user) => {};
-
-  handleDelete = (user) => {};
+  };
 }
 
 export default Users;
