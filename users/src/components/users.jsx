@@ -37,10 +37,10 @@ class Users extends Component {
                 <h5>{user.email}</h5>
                 <div className="row">
                     <div className="col-6">
-                        <button type="button" class="btn btn-primary" onClick={this.handleUpdate}>Update</button>
+                        <button type="button" class="btn btn-primary"  onClick={()=>{this.handleUpdate(user)}}>Update</button>
                     </div>
                     <div className="col-6">
-                    <button type="button" class="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+                    <button type="button" class="btn btn-danger"  onClick={()=>{this.handleDelete(user)}}>Delete</button>
                     </div>
                 </div>
               </div>
@@ -54,7 +54,22 @@ class Users extends Component {
   }
 
 
-  handleCreate = () => {};
+  handleCreate = async () => {
+      const newUser = {
+        first_name: 'shaden',
+        last_name: 'Ghasri',
+        email: 'ghasrishaden@gmail.com',
+        avatar: 'https://images.unsplash.com/photo-1580681477315-f272d1430746?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=412&q=80'
+      };
+      const response = await axios.post("https://reqres.in/api/users", newUser);
+      this.setState({users: [...this.state.users, newUser]});
+  };
+
+  
+  
+
+
+
 
   handleUpdate = (user) => {};
 
