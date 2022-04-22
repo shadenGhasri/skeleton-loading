@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { Component } from "react";
+import LoadingUsers from "./loading/loading";
 
 class Users extends Component {
   state = {
     users: [],
+    isLoading: true
   };
 
   async componentDidMount(){
       const response = await axios.get("https://reqres.in/api/users");
-      this.setState({users: response.data.data})
+      this.setState({users: response.data.data , isLoading:false})
   }
   render() {
     return (
@@ -17,7 +19,11 @@ class Users extends Component {
           Create
         </button>
         <div className="row">
-          {this.state.users.map((user) => {
+          {
+              this.state.isLoading ? (
+                  <LoadingUsers/>
+              ) : (
+                this.state.users.map((user) => {
             return (
               <div className="col-4 text-center p-5">
                 <img
@@ -39,7 +45,9 @@ class Users extends Component {
                 </div>
               </div>
             );
-          })}
+          })
+              )
+          }
         </div>
       </div>
     );

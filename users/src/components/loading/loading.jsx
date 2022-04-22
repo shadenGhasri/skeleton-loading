@@ -1,4 +1,4 @@
-import Skeleton from 'react-loading-skeleton';
+import Skeleton from 'react-loading-skeleton'; 
 
 const LoadingUsers = () => {
     return Array(6).fill({}).map(()=>{
